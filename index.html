@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ws</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/html.css">
+	<link rel="stylesheet" type="text/css" href="css/viewcss.css">
+	<!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+	-->
+	<script src="jslib/spin.min.js"></script>
+	<script src="jslib/jquery.min.js"></script>
+	<script src="jslib/d3.js"></script>
+	<script src="jslib/underscore-min.js"></script>
+
+	<link rel="stylesheet" href="css/tip-violet/tip-violet.css" type="text/css" />
+
+	<script type="text/javascript" src="jslib/jquery-1.4.min.js"></script>
+	<script type="text/javascript" src="jslib/jquery.poshytip.js"></script>
+	<script src="jslib/spin.min.js"></script>
+
+	<script src="jslib/drawMatrix.js"></script>
+	<script src="jslib/drawLine.js"></script>
+	
+  <link rel="stylesheet" href="datepicker/css/datepicker.css" type="text/css" />
+  <script type="text/javascript" src="datepicker/js/jquery.js"></script>
+  <script type="text/javascript" src="datepicker/js/datepicker.js"></script>
+  <script type="text/javascript" src="datepicker/js/eye.js"></script>
+  <script type="text/javascript" src="datepicker/js/utils.js"></script>
+  </head>
+  <body>
+
+  <div id="div0">
+	  <form id="div0choose">
+		  <input type="radio" name="datascale" value="log" id="typelog" checked=”checked” /> log
+		  <input type="radio" name="datascale" value="linear" id="typelinear"/> linear
+		  &nbsp &nbsp &nbsp
+		  <input type="radio" name="colormap" value="map3" id="colormap3"/> colormap1
+		  <input type="radio" name="colormap" value="map2" id="colormap2" checked=”checked” /> colormap2
+		  </br>
+		  <input type="radio" name="show" value="log" id="typesrc" checked=”checked” /> src
+		  <input type="radio" name="show" value="linear" id="typedst"/> dst
+		  <input type="radio" name="show" value="linear" id="typeall"/> all
+
+	  </form>
+  </div>
+  
+  <div id="matrix1">
+	<span id="returnctrl" style="display:none;"><i class="fa fa-reply "></i>return</span>
+  </div>
+  <div id="matrix1layout"></div>
+  <div id="wait"></div>
+  <div id="timepicker"></div>
+  <div id="matrix2"></div>
+  <div id="matrix2layout"></div>
+  <div id="largeview"></div>
+  <div id="lineview"></div>
+
+  <div id="linecheck">
+    <input type="checkbox"  id="SrcCnt" checked="checked"/>
+    SrcCnt
+    <input type="checkbox"  id="DstCnt" checked="checked"/>
+    DstCnt
+    <input type="checkbox"  id="AllCnt" checked="checked"/>
+    AllCnt
+
+  </div>
+
+
+	<script src="js/view1.js"></script>
+	<script src="js/view2.js"></script>
+	
+	<script src="js/dateview.js"></script>
+	<script src="js/view4.js"></script>
+	<script src="js/test.js"></script>
+	
+	<script type="text/javascript" src="js/observer.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+	<script src="js/viewmap.js"></script>
+  </body>
+</html> 

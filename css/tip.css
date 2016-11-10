@@ -1,0 +1,39 @@
+.bar:hover{
+  fill:steelblue;
+}
+
+.d3-tip-top,
+.d3-tip-left-right,
+.d3-tip-Label{
+  line-height: 1;
+ /* font-weight: bold;*/
+  font-family: Times New Roman;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip-top:after,
+.d3-tip-Label:after{
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip-top.n:after,
+.d3-tip-Label.n:after{
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}

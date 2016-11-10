@@ -1,0 +1,86 @@
+	    body{
+	     	font-family: Georgia;
+
+	    }
+		*{
+			margin:0px;
+			padding:0px;
+		}
+	    #chooseTable{
+
+			float:left;
+			padding:10px;
+
+	    }	
+		#matrix,#matrix-spinner{
+			width:70%;
+	    	height:100%;
+			float:left;
+			margin:10px;
+		}
+
+		
+		text.mono {
+			font-size: 9pt;
+			font-family: Consolas, courier;
+			fill: white;
+		  }
+
+		.axis path,.axis line{  
+			fill: none;  
+			stroke: white;  
+			shape-rendering: crispEdges;  
+		}  
+		.axis text ,.tick{  
+			fill: white;
+			font-family: Consolas, courier;
+			font-size: 9px;  
+		}
+		.brush .extent {
+		  stroke: #fff;
+		  fill-opacity: .3;
+		  shape-rendering: crispEdges;
+		}
+		.navbar-nav > li > a, .navbar-brand {
+			padding-top:4px !important; 
+			padding-bottom:0 !important;
+			height: 28px;
+    	}
+    	.navbar {min-height:28px !important;}
+
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border-color: #ccc;
+        }
+        
+        .tg td {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 10px 15px;
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: #ccc;
+            color: #333;
+            background-color: #fff;
+        }
+        
+        .tg th {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: #ccc;
+            color: #333;
+            background-color: #f0f0f0;
+        }
+        
+        .tg .tg-s6z2 {
+            text-align: center
+        }

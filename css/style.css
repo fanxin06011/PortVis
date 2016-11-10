@@ -1,0 +1,124 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#div0,#linecheck,#ipslider,#portslider{
+  background-color: black;
+}
+#matrix1{
+  position: absolute;
+  left: 0%;
+  width:40%;
+  height: 100%;
+  background-color: black;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  float:left;
+}
+#wait{
+	position: absolute;
+	 left: 0%;
+	 width:40%;
+	 height: 100%;
+	 overflow-x:hidden;
+	 overflow-y:hidden;
+	 float:left;
+	z-index:100;
+}
+#matrix1layout {
+  position: absolute;
+  left: 0%;
+  width:40%;
+  background-color: black;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  float:left;
+}
+#largeview{
+  position: absolute;
+  top: 65%;
+  left: 56.2%;
+  width:26%;
+  height:35%;
+  background-color: black;
+}
+#timepicker{
+  position: absolute;
+  top: 65%;
+  left: 83%;
+  width:17%;
+  height:35%;
+  //background-color: black;
+}
+#matrix2 {
+  position: absolute;
+  left: 40.6%;
+  top:0%;
+  width:15%;
+  height: 79%;
+  background-color: black;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  float:left;
+}
+#matrix2layout {
+  position: absolute;
+  left: 40.6%;
+  width:15%;
+  top:80%;
+  height:20%;
+  background-color: black;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  float:left;
+}
+
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .25;
+  shape-rendering: crispEdges;
+}
+#lineview{
+  position: absolute;
+  top: 0%;
+  left: 56.2%;
+  width:43%;
+  height:64%;
+  background-color: black;
+  overflow-x:hidden;
+  overflow-y:hidden;
+}
+#linecheck{
+  position: absolute;
+  top:0%;
+  left: 56.2%;
+  width:43%;
+  background-color: black;
+}
+#linecheck,#div0choose{
+  font-size: 10px;
+  color: white;
+}
+.axisx path,.axisx line {
+  fill: none;
+  stroke: white;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+.axisx text {
+  font-family: sans-serif;
+  font-size: 11px; 
+  color:red;
+}
+
+
+i .fa-angle-left{
+  color:white;
+}
+a:link {color:white;} 
+a:hover {color:grey;}
+
+
+
+
+

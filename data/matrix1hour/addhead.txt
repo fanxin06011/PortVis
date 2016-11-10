@@ -1,0 +1,7 @@
+for i in range(1, 53 + 1):
+	for j in range(1, 24 + 1):
+		filename="d"+str(i)+"-"+str(j)+".csv";
+		with open (filename, 'r') as original: 
+			data = original.read () 
+		with open (filename, 'w') as modified: 
+			modified.write ("src,dst\n" + data )

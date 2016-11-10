@@ -1,0 +1,6 @@
+for i in range(1, 53 + 1):
+	filename="p"+str(i)+".csv";
+	with open (filename, 'r') as original: 
+		data = original.read () 
+	with open (filename, 'w') as modified: 
+		modified.write ("src,dst\n" + data )
