@@ -7,13 +7,16 @@ var placeH=$("#lineview").height();
 	function View2(Observer){
 		var view2={};
 		
-		var selectarr=[1,1,1];
+		//var selectarr=[1,1,1];
+		var selectarr=[1,1,1,1];
 		var srccnt=[0,0];
 		var dstcnt=[0,0];
 		var allcnt=[0,0];
 
-		var labeltext=["srccnt","dstcnt","allcnt"];
-		var linecolor=["white","yellow","steelblue"];
+		//var labeltext=["srccnt","dstcnt","allcnt"];
+		//var linecolor=["white","yellow","steelblue"];
+		var labeltext=["sessioncnt","uniquesrc","uniquedst","uniquecomb"];
+		var linecolor=["white","yellow","steelblue","green"];
 		var axistype="time";//time?num?
 		var axisarr=["2016/5/12 11:12:23","2016/5/12 18:02:11"];
 		var highall0every1=0;
@@ -24,6 +27,14 @@ var placeH=$("#lineview").height();
 		var enableclklabel=0;
 		
 		var daynow=-1;var portnow=-1;
+		
+		var sessioncnt=new Array(288);
+		var uniquesrc=new Array(288);
+		var uniquedst=new Array(288);
+		var uniquecomb=new Array(288);
+		for(var i=0;i<288;i++){
+			uniquesrc[i]=0;uniquedst[i]=0;uniquecomb[i]=0;sessioncnt[i]=0;
+		}
 		
 		var line1 = LineClass.createNew();
 		line1.selectbrushfunc(function(){console.log("brushfunction");});
@@ -43,20 +54,26 @@ var placeH=$("#lineview").height();
 		})
 		
 		function initliine(){
-			var tmpall=[srccnt,dstcnt,allcnt];
+			//var tmpall=[srccnt,dstcnt,allcnt];
+			//line1.draw(tmpall,selectarr,labeltext,linecolor,axisarr);
+			var tmpall=[sessioncnt,uniquesrc,uniquedst,uniquecomb];
 			line1.draw(tmpall,selectarr,labeltext,linecolor,axisarr);
 		}
 
-		$("#SrcCnt").click(function(){
+		$("#sscnt").click(function(){
 				if(selectarr[0]==1){selectarr[0]=0;}else{selectarr[0]=1;}
 				initliine();
 		});
-		$("#DstCnt").click(function(){
+		$("#uqsrc").click(function(){
 				if(selectarr[1]==1){selectarr[1]=0;}else{selectarr[1]=1;}
 				initliine();
 		});
-		$("#AllCnt").click(function(){
+		$("#uqdst").click(function(){
 				if(selectarr[2]==1){selectarr[2]=0;}else{selectarr[2]=1;}
+				initliine();
+		});
+		$("#uqcomb").click(function(){
+				if(selectarr[3]==1){selectarr[3]=0;}else{selectarr[3]=1;}
 				initliine();
 		});
 
@@ -85,17 +102,64 @@ var placeH=$("#lineview").height();
 					//console.log(tmpstart+" "+tmpend);
 					axisarr=[tmpstart+" 00:00:00",tmpend+" 00:00:00"];
 					console.log(axisarr);
-					linecsv();
+					//linecsv();
+					getlinedata();
 				}
 			}
 			if(message == "showline"){
 				if(from == "view4"){	
 					console.log("lineview received "+data+" from largerview");
 					portnow=parseInt(data);
-					linecsv();
+					//linecsv();
+					getlinedata();
 				}
 			}
 		}
+		
+		function getlinedata(){
+			if(portnow==-1){return -1;}
+			var tmpsrcip=[];
+			var tmpdstip=[];
+			var tmpcombadd=[];var tmpcombmin=[];
+			var premin=0;var tmpcnt=0;
+			var path="data/allday/day"+(daynow-1)+".csv";
+			for(var i=0;i<288;i++){
+				uniquesrc[i]=0;uniquedst[i]=0;uniquecomb[i]=0;sessioncnt[i]=0;
+			}
+			d3.csv(path,function(data) {
+				var datafiltered=data.filter(function(ele,index){
+					return((parseInt(ele.SRCPORT)==portnow)||(parseInt(ele.DSTPORT)==portnow));
+				});
+				for(var i=0;i<datafiltered.length;i++){
+					var tmpmin=parseInt((parseInt(datafiltered[i].TIMEINT)-(daynow-1)*86400)/300);
+					if(tmpmin>premin){
+						var tmparr;var tmparr2;
+						tmparr=_.unique(tmpsrcip);
+						uniquesrc[premin]=tmparr.length;
+						tmparr=_.unique(tmpdstip);
+						uniquedst[premin]=tmparr.length;
+						tmparr=_.unique(tmpcombadd);tmparr2=_.unique(tmpcombmin);
+						uniquecomb[premin]=_.max([tmparr.length,tmparr2.length]);
+						//console.log(uniquecomb[premin]);
+						sessioncnt[premin]=tmpcnt;
+						tmpcnt=0;
+						premin=tmpmin;
+						tmpsrcip=[];tmpdstip=[];tmpcombadd=[];tmpcombmin=[];
+					}
+					tmpcnt=tmpcnt+1;
+					var tmpsrc=parseInt(datafiltered[i].SRCID);
+					var tmpdst=parseInt(datafiltered[i].DSTID);
+					tmpsrcip.push(tmpsrc);
+					tmpdstip.push(tmpdst);
+					tmpcombadd.push(tmpsrc+tmpdst);
+					tmpcombmin.push(Math.abs(tmpsrc-tmpdst));
+				}
+				//console.log(uniquesrc);console.log(uniquedst);
+				//console.log(uniquecomb);console.log(sessioncnt);
+				initliine();
+			});
+		}
+		
 		function linecsv(){
 			if(portnow==-1){return -1;}
 			var path="data/line/d"+daynow+"-"+(parseInt(portnow/1024)+1)+".csv";

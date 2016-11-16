@@ -253,6 +253,7 @@ var middlelayoutH=$("#matrix2layout").height();
 				view1Matrix1.setMatrix(json);
 				view1Matrix1.drawPortFromArr(arr);
 				addmovecircle();
+				resendlarge();
 			});
 			
 		}
